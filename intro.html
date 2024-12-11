@@ -5,15 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Задания твоего дня</title>
   <style>
-    body {
+    /* Общие стили */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
       font-family: Arial, sans-serif;
       background-color: #F5E9DD; /* Светлый фон */
       color: #494949; /* Темный текст */
-      margin: 0;
-      padding: 0;
-      height: 100vh; /* Высота страницы равна 100% экрана */
-      display: flex;
-      flex-direction: column;
+      height: 100%; /* Фиксированная высота страницы */
+      overflow: hidden; /* Отключение прокрутки страницы */
     }
 
     /* Стиль для верхней панели */
@@ -21,44 +25,27 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 20px;
-       /* Красновато-оранжевый */
+      padding: 20px 20px 10px; /* Отступы сверху и по бокам */
       color: #F5E9DD; /* Светлый текст */
     }
 
-    .header .back-arrow {
+    .back-arrow, .nav-button {
       font-size: 24px;
       cursor: pointer;
-    }
-    .back-arrow{
       color: #494949;
-    }
-
-    .header .nav-button {
-      padding: 10px 20px;
-      background-color: #494949; /* Темный фон кнопки */
-      color: #F5E9DD; /* Светлый текст */
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: background-color 0.3s;
-    }
-
-    .header .nav-button:hover {
-      background-color: #333333; /* Темный оттенок при наведении */
     }
 
     /* Линия */
     .line {
       border-top: 2px solid #494949;
-      margin:5px 0;
+      margin: 5px 20px; /* Отступы для линии */
     }
 
     /* Стиль заголовка */
     .title {
       text-align: center;
       font-size: 32px;
-      margin: 20px 0;
+      margin: 20px; /* Отступы вокруг заголовка */
       color: #494949;
     }
 
@@ -66,38 +53,34 @@
     .tasks-container {
       background-color: #494949; /* Темный фон для контейнера */
       color: #F5E9DD; /* Светлый цвет текста */
-      padding: 10px;
-      margin-top: 0; /* Прикрепляем контейнер к низу */
-      height: 70vh; /* Высота контейнера 70% от высоты экрана */
-      overflow-y: auto; /* Включаем прокрутку, если контент не помещается */
+      padding: 20px; /* Внутренние отступы */
+      height: 70%; /* Высота контейнера 70% от высоты страницы */
+      overflow-y: auto; /* Включаем прокрутку только для контейнера */
       border-radius: 8px;
-      box-sizing: border-box;
-      transform: translateY(100px);
+      margin: 0 20px; /* Отступы по бокам */
+      position: relative;
+      transform: translateY(120px); /* Смещение контейнера вниз */
     }
 
     /* Задания */
     .task {
       background-color: transparent; /* Фон такой же, как у контейнера */
       color: #F5E9DD; /* Цвет текста */
-      padding: 10px;
-      padding-left: 10px;
-      margin: 10px 0;
+      padding: 10px; /* Внутренние отступы */
+      margin-bottom: 10px; /* Отступ между заданиями */
       font-size: 18px;
     }
 
     /* Линия между заданиями */
     .task + .task {
       border-top: 2px solid #F5E9DD; /* Линия между заданиями */
+      padding-top: 10px; /* Отступ сверху после линии */
     }
 
     /* Адаптивность */
     @media (max-width: 768px) {
       .title {
         font-size: 28px;
-      }
-
-      .tasks-container {
-        margin: 10px;
       }
 
       .task {
@@ -107,9 +90,7 @@
   </style>
 </head>
 <body>
-
-  <div class="line"></div>
-
+  <!-- Верхняя панель -->
   <div class="header">
     <!-- Стрелочка назад -->
     <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368"><path d="M640-80 240-480l400-400 71 71-329 329 329 329-71 71Z"/></svg>
@@ -124,47 +105,49 @@
   <!-- Заголовок -->
   <h1 class="title">Задания твоего дня</h1>
 
-
   <!-- Контейнер с заданиями -->
   <div class="tasks-container">
     <div class="task">
-      <h3>Задание 1: </h3>
+      <h3>Задание 1</h3>
       <p>Выполнить утреннюю зарядку</p>
     </div>
     <div class="task">
-      <h3>Задание 1: </h3>
+      <h3>Задание 2</h3>
+      <p>Приготовить завтрак</p>
+    </div>
+    <div class="task">
+      <h3>Задание 3</h3>
+      <p>Прочитать 10 страниц книги</p>
+    </div>
+    <div class="task">
+      <h3>Задание 4</h3>
+      <p>Сходить на прогулку</p>
+    </div>
+    <div class="task">
+      <h3>Задание 5</h3>
+      <p>Закончить рабочий проект</p>
+    </div>
+    <div class="task">
+      <h3>Задание 1</h3>
       <p>Выполнить утреннюю зарядку</p>
     </div>
     <div class="task">
-      <h3>Задание 1: </h3>
-      <p>Выполнить утреннюю зарядку</p>
+      <h3>Задание 2</h3>
+      <p>Приготовить завтрак</p>
     </div>
     <div class="task">
-      <h3>Задание 1: </h3>
-      <p>Выполнить утреннюю зарядку</p>
+      <h3>Задание 3</h3>
+      <p>Прочитать 10 страниц книги</p>
     </div>
     <div class="task">
-      <h3>Задание 1: </h3>
-      <p>Выполнить утреннюю зарядку</p>
+      <h3>Задание 4</h3>
+      <p>Сходить на прогулку</p>
     </div>
     <div class="task">
-      <h3>Задание 1: </h3>
-      <p>Выполнить утреннюю зарядку</p>
-    </div>
-    <div class="task">
-      <h3>Задание 1: </h3>
-      <p>Выполнить утреннюю зарядку</p>
-    </div>
-    <div class="task">
-      <h3>Задание 1: </h3>
-      <p>Выполнить утреннюю зарядку</p>
+      <h3>Задание 5</h3>
+      <p>Закончить рабочий проект</p>
     </div>
   </div>
-  <script async src="https://t.me/p/js/telegram-web-app.js"></script>
-  <script>
-    window.Telegram.WebApp.init();
-  </script>
-  <script src="index.js"></script>
 </body>
 </html>
 
