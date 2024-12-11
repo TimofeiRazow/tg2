@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Задания твоего дня</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #F5E9DD; /* Светлый фон */
+      color: #494949; /* Темный текст */
+      margin: 0;
+      padding: 0;
+      height: 100vh; /* Высота страницы равна 100% экрана */
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Стиль для верхней панели */
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px;
+       /* Красновато-оранжевый */
+      color: #F5E9DD; /* Светлый текст */
+    }
+
+    .header .back-arrow {
+      font-size: 24px;
+      cursor: pointer;
+    }
+    .back-arrow{
+      color: #494949;
+    }
+
+    .header .nav-button {
+      padding: 10px 20px;
+      background-color: #494949; /* Темный фон кнопки */
+      color: #F5E9DD; /* Светлый текст */
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .header .nav-button:hover {
+      background-color: #333333; /* Темный оттенок при наведении */
+    }
+
+    /* Линия */
+    .line {
+      border-top: 2px solid #494949;
+      margin:5px 0;
+    }
+
+    /* Стиль заголовка */
+    .title {
+      text-align: center;
+      font-size: 32px;
+      margin: 20px 0;
+      color: #494949;
+    }
+
+    /* Контейнер для заданий */
+    .tasks-container {
+      background-color: #494949; /* Темный фон для контейнера */
+      color: #F5E9DD; /* Светлый цвет текста */
+      padding: 10px;
+      margin-top: 0; /* Прикрепляем контейнер к низу */
+      height: 70vh; /* Высота контейнера 70% от высоты экрана */
+      overflow-y: auto; /* Включаем прокрутку, если контент не помещается */
+      border-radius: 8px;
+      box-sizing: border-box;
+      transform: translateY(100px);
+    }
+
+    /* Задания */
+    .task {
+      background-color: transparent; /* Фон такой же, как у контейнера */
+      color: #F5E9DD; /* Цвет текста */
+      padding: 10px;
+      padding-left: 10px;
+      margin: 10px 0;
+      font-size: 18px;
+    }
+
+    /* Линия между заданиями */
+    .task + .task {
+      border-top: 2px solid #F5E9DD; /* Линия между заданиями */
+    }
+
+    /* Адаптивность */
+    @media (max-width: 768px) {
+      .title {
+        font-size: 28px;
+      }
+
+      .tasks-container {
+        margin: 10px;
+      }
+
+      .task {
+        font-size: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="line"></div>
+
+  <div class="header">
+    <!-- Стрелочка назад -->
+    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368"><path d="M640-80 240-480l400-400 71 71-329 329 329 329-71 71Z"/></svg>
+    
+    <!-- Кнопка для навигации -->
+    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368"><path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/></svg>
+  </div>
+
+  <!-- Линия -->
+  <div class="line"></div>
+
+  <!-- Заголовок -->
+  <h1 class="title">Задания твоего дня</h1>
+
+
+  <!-- Контейнер с заданиями -->
+  <div class="tasks-container">
+    <div class="task">
+      <h3>Задание 1: </h3>
+      <p>Выполнить утреннюю зарядку</p>
+    </div>
+    <div class="task">
+      <h3>Задание 1: </h3>
+      <p>Выполнить утреннюю зарядку</p>
+    </div>
+    <div class="task">
+      <h3>Задание 1: </h3>
+      <p>Выполнить утреннюю зарядку</p>
+    </div>
+    <div class="task">
+      <h3>Задание 1: </h3>
+      <p>Выполнить утреннюю зарядку</p>
+    </div>
+    <div class="task">
+      <h3>Задание 1: </h3>
+      <p>Выполнить утреннюю зарядку</p>
+    </div>
+    <div class="task">
+      <h3>Задание 1: </h3>
+      <p>Выполнить утреннюю зарядку</p>
+    </div>
+    <div class="task">
+      <h3>Задание 1: </h3>
+      <p>Выполнить утреннюю зарядку</p>
+    </div>
+    <div class="task">
+      <h3>Задание 1: </h3>
+      <p>Выполнить утреннюю зарядку</p>
+    </div>
+  </div>
+  <script async src="https://t.me/p/js/telegram-web-app.js"></script>
+  <script>
+    window.Telegram.WebApp.init();
+  </script>
+  <script src="index.js"></script>
+</body>
+</html>
+
+

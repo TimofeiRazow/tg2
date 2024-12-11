@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Профиль пользователя</title>
+  <script async src="https://t.me/p/js/telegram-web-app.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #F5E9DD; /* Светлый фон */
+      color: #494949; /* Темный текст */
+      margin: 0;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    .profile-container {
+      background-color: #494949;
+      color: #F5E9DD;
+      padding: 20px;
+      border-radius: 10px;
+      width: 100%;
+      max-width: 400px;
+      text-align: center;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .profile-photo {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      margin-bottom: 20px;
+      object-fit: cover;
+    }
+
+    .profile-name {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .profile-info {
+      font-size: 16px;
+      color: #E85D56;
+    }
+
+    .main-button {
+      background-color: #E85D56;
+      color: #F5E9DD;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      margin-top: 20px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .main-button:hover {
+      background-color: #D44C4C;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="profile-container">
+    <img id="profile-photo" class="profile-photo" src="" alt="Фото профиля">
+    <div id="profile-name" class="profile-name">Имя пользователя</div>
+    <div id="profile-info" class="profile-info">Информация о пользователе</div>
+    <button id="main-button" class="main-button">Поделиться</button>
+  </div>
+
+  <script>
+    // Инициализация Telegram Web App
+    Telegram.WebApp.ready();
+
+    // Получение информации о пользователе
+    const user = Telegram.WebApp.initDataUnsafe?.user;
+
+    // Отображение информации о пользователе
+    if (user) {
+      // Установка фото пользователя, если оно есть
+      if (user.photo_url) {
+        document.getElementById('profile-photo').src = user.photo_url;
+      } else {
+        document.getElementById('profile-photo').src = 'https://via.placeholder.com/120'; // Заглушка, если фото нет
+      }
+
+      // Установка имени пользователя
+      document.getElementById('profile-name').textContent = `${user.first_name} ${user.last_name || ''}`;
+
+      // Установка дополнительной информации (например, язык)
+      document.getElementById('profile-info').textContent = `Язык: ${user.language_code}`;
+    }
+
+    // Обработчик кнопки
+    const mainButton = document.getElementById('main-button');
+    mainButton.addEventListener('click', () => {
+      Telegram.WebApp.showPopup({
+        message: "Это тестовый мини-приложение профиля!",
+        buttons: [{ text: "Закрыть", type: "close" }]
+      });
+    });
+  </script>
+
+</body>
+</html>
