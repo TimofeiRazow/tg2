@@ -77,35 +77,35 @@
   <script>
     // Инициализация Telegram Web App
     Telegram.WebApp.ready();
-
+  
     // Получение информации о пользователе
     const user = Telegram.WebApp.initDataUnsafe?.user;
-
-    // Отображение информации о пользователе
+  
+    // Проверяем, если данные о пользователе получены
     if (user) {
-      // Установка фото пользователя, если оно есть
+      const profilePhoto = document.getElementById('profile-photo');
+      const profileName = document.getElementById('profile-name');
+      const profileInfo = document.getElementById('profile-info');
+  
+      // Устанавливаем имя пользователя
+      profileName.textContent = `${user.first_name} ${user.last_name || ''}`;
+  
+      // Устанавливаем дополнительную информацию (например, язык)
+      profileInfo.textContent = `Язык: ${user.language_code || 'не указан'}`;
+  
+      // Проверяем и устанавливаем фото профиля
       if (user.photo_url) {
-        document.getElementById('profile-photo').src = user.photo_url;
+        profilePhoto.src = user.photo_url;
       } else {
-        document.getElementById('profile-photo').src = 'https://via.placeholder.com/120'; // Заглушка, если фото нет
+        // Если фото нет, используем заглушку
+        profilePhoto.src = 'https://via.placeholder.com/120';
       }
-
-      // Установка имени пользователя
-      document.getElementById('profile-name').textContent = `${user.first_name} ${user.last_name || ''}`;
-
-      // Установка дополнительной информации (например, язык)
-      document.getElementById('profile-info').textContent = `Язык: ${user.language_code}`;
+    } else {
+      console.error('Не удалось получить данные пользователя. Убедитесь, что Mini App инициализировано правильно.');
+      alert('Ошибка: не удалось загрузить данные пользователя.');
     }
-
-    // Обработчик кнопки
-    const mainButton = document.getElementById('main-button');
-    mainButton.addEventListener('click', () => {
-      Telegram.WebApp.showPopup({
-        message: "Это тестовый мини-приложение профиля!",
-        buttons: [{ text: "Закрыть", type: "close" }]
-      });
-    });
   </script>
+  
 
 </body>
 </html>
